@@ -32,6 +32,7 @@ const HomeCategory = ({ category: { title, movies } }: HomeCategoryProps) => {
           />
         )}
         horizontal
+        showsHorizontalScrollIndicator={false}
       />
     </>
   )
