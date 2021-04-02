@@ -5,9 +5,9 @@ import * as React from 'react'
 
 import Colors from '../constants/Colors'
 import useColorScheme from '../hooks/useColorScheme'
-import TabOneScreen from '../screens/TabOneScreen'
+import HomeScreen from '../screens/HomeScreen'
 import TabTwoScreen from '../screens/TabTwoScreen'
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types'
+import { BottomTabParamList, HomeParamList, TabTwoParamList } from '../types'
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>()
 
@@ -21,9 +21,11 @@ export default function BottomTabNavigator() {
     >
       <BottomTab.Screen
         name="Home"
-        component={TabOneNavigator}
+        component={HomeNavigator}
         options={{
-          tabBarIcon: ({ color }) => <AntDesign name="home" size={24} />,
+          tabBarIcon: ({ color }) => (
+            <AntDesign color={color} name="home" size={24} />
+          ),
         }}
       />
       <BottomTab.Screen
@@ -31,7 +33,7 @@ export default function BottomTabNavigator() {
         component={TabTwoNavigator}
         options={{
           tabBarIcon: ({ color }) => (
-            <MaterialIcons name="video-library" size={24} />
+            <MaterialIcons color={color} name="video-library" size={24} />
           ),
         }}
       />
@@ -39,14 +41,18 @@ export default function BottomTabNavigator() {
         name="Search"
         component={TabTwoNavigator}
         options={{
-          tabBarIcon: ({ color }) => <Ionicons name="search" size={24} />,
+          tabBarIcon: ({ color }) => (
+            <Ionicons color={color} name="search" size={24} />
+          ),
         }}
       />
       <BottomTab.Screen
         name="Downloads"
         component={TabTwoNavigator}
         options={{
-          tabBarIcon: ({ color }) => <AntDesign name="download" size={24} />,
+          tabBarIcon: ({ color }) => (
+            <AntDesign color={color} name="download" size={24} />
+          ),
         }}
       />
     </BottomTab.Navigator>
@@ -64,17 +70,17 @@ export default function BottomTabNavigator() {
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const TabOneStack = createStackNavigator<TabOneParamList>()
+const HomeStack = createStackNavigator<HomeParamList>()
 
-function TabOneNavigator() {
+function HomeNavigator() {
   return (
-    <TabOneStack.Navigator>
-      <TabOneStack.Screen
-        name="TabOneScreen"
-        component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+    <HomeStack.Navigator>
+      <HomeStack.Screen
+        name="HomeScreen"
+        component={HomeScreen}
+        options={{ headerShown: false }}
       />
-    </TabOneStack.Navigator>
+    </HomeStack.Navigator>
   )
 }
 
